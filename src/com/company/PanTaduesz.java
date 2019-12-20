@@ -12,7 +12,7 @@ public class PanTaduesz {
     private static void openFile() {
 
         JButton open = new JButton();
-        JFileChooser f = new JFileChooser("C:\\Users\\kujap\\Desktop\\pan tadeusz\\");
+        JFileChooser f = new JFileChooser(".");
         f.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         if (f.showOpenDialog(open) == JFileChooser.APPROVE_OPTION) {
 
@@ -40,8 +40,9 @@ public class PanTaduesz {
 
         while (sc.hasNext()) {
 
-            sc.useDelimiter("[-+*, …—?»)(«!.;:/#_^\\s]");
+            sc.useDelimiter("[-+*, …—?»)(«!.;:/#_^\\s]+");
             // I have a problem here with delimiter as it adds empty strings as words
+            // PC: add + at the end, which means: "one or more" (consecutive sign makes a single delimiter...)
             String slowo = sc.next();
             // I was forced to add this function because of delimiter problem
             if (!slowo.equals("")) {
@@ -69,7 +70,7 @@ public class PanTaduesz {
         String slowo;
         while (sc.hasNext()) {
             // I have a problem here with delimiter as it adds empty strings as words
-            sc.useDelimiter("[-+*, .…—?»)(«!;:/#_^\\s]");
+            sc.useDelimiter("[-+*, .…—?»)(«!;:/#_^\\s]+");
             slowo = sc.next();
             // I was forced to add this function because of delimiter problem:
             if (!slowo.equals("")) {
@@ -152,7 +153,7 @@ public class PanTaduesz {
         String slowo;
         int j =0;
         while (sc.hasNext()) {
-            sc.useDelimiter("[-+*, .…—?»)(«!;:/#_^\\s]");
+            sc.useDelimiter("[-+*, .…—?»)(«!;:/#_^\\s]+");
             slowo = sc.next();
             if (!slowo.equals("")) {
                 if(map.get(slowo.toLowerCase())==null){
